@@ -1,0 +1,74 @@
+#main{
+	height: 100%;
+	width: 100%;
+}
+
+#flower_shop{
+	height: 100%;
+	width: 48%;
+	float: left;
+
+	-webkit-box-shadow: inset 0 6px 6px -6px black;
+	   -moz-box-shadow: inset 0 6px 6px -6px black;
+	        box-shadow: inset 0 6px 6px -6px black;
+
+	background-image: url(/images/furley_bg.png)
+}
+
+
+.center{
+	width: 50%;
+	margin: auto;
+	margin-top: 50px;
+	text-align: center;
+	color: #7A6148
+}
+
+#driver{
+	height: 100%;
+	width: 48%;
+	float: left;
+
+	-webkit-box-shadow: inset 0 6px 6px -6px black;
+	   -moz-box-shadow: inset 0 6px 6px -6px black;
+	        box-shadow: inset 0 6px 6px -6px black;
+
+	background-image: url(/images/furley_bg.png);
+
+}
+
+#page{
+	height: 100%;
+	width: 100%;
+}
+
+#divider{
+	width: 3.9%;
+	height: 100%;
+	-moz-box-shadow:    3px 3px 6px 4px #ccc;
+  -webkit-box-shadow: 3px 3px 6px 4px #ccc;
+  box-shadow:         3px 3px 6px 4px #ccc;
+	float: left;
+	
+	background-image: url(/images/light_alu.png);
+
+}
+
+#innerDivider{
+	height: 100%;
+	width: 100%;
+	-webkit-box-shadow: inset 0 6px 3px -6px black;
+	   -moz-box-shadow: inset 0 6px 3px -6px black;
+	        box-shadow: inset 0 6px 3px -6px black;
+
+	background-color: rgba(140,98,57,.3);
+}
+
+.ui-content{
+	padding: 0px;
+	height: 100%;
+}
+
+.ui-page-active{
+	height: 100%;
+}
