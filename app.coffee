@@ -86,7 +86,8 @@ exports.createServer = ->
   app.get '/', (req, res)->
     res.render('index', {title: "FlowerShop/Driver"})
 
-  app.post '/deliveries'
+  app.post '/deliveries', (req, res)->
+
 
   app.get "/app", (req, res)->
     ensureAuthenticated req, res, ()->
@@ -121,7 +122,7 @@ exports.createServer = ->
 
 
   app.get '/auth/foursquare/callback', passport.authenticate('foursquare', { failureRedirect: '/login' }), (req, res) ->
-    UserController.authCallback res, req
+    UserController.authCallback req, res
 
   # final return of app object
   app
