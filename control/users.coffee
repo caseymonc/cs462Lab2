@@ -1,3 +1,4 @@
+request = require "request"
 
 module.exports = (User, Account) =>
 	
