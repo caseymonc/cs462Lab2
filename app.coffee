@@ -86,12 +86,12 @@ exports.createServer = ->
   app.get '/', (req, res)->
     res.render('index', {title: "FlowerShop/Driver"})
 
-  app.post '/deliveries', (req, res)->
+  #app.post '/deliveries', (req, res)->
 
 
   app.get "/app", (req, res)->
     ensureAuthenticated req, res, ()->
-      res.redirect '/profiles' + req.session.account.foursquareId
+      res.redirect '/profile/' + req.session.account.foursquareId
 
   app.get '/profile/:user_id', (req, res)->
     UserController.renderProfile req, res
