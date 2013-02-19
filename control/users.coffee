@@ -60,16 +60,16 @@ module.exports = (User, Account) =>
 
 ensureAuthenticated= (req, res, next)->
 	ensureUserAuthenticated req, res, ()->
-  	ensureFoursquareAuthenticated req, res, next
+		ensureFoursquareAuthenticated req, res, next
 
 ensureUserAuthenticated= (req, res, next)->
 	console.log 'Try Auth Login'
-  return next() if req.session?.user?
-  res.redirect '/login'
+	return next() if req.session?.user?
+	res.redirect '/login'
 
-ensureFoursquareAuthenticated= (req, res, next)->
+ensureFoursquareAuthenticated= (req, res, next)->	
 	console.log 'Try Auth Foursquare'
-  return next() if req.session?.account?
-  res.redirect '/login/foursquare'
+	return next() if req.session?.account?
+	res.redirect '/login/foursquare'
 
 
