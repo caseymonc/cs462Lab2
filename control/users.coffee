@@ -56,7 +56,7 @@ module.exports = (User, Account) =>
 		if req.session?.user?
 			delete req.session.user
 		req.session.destroy()
-		return res.redirect '/login'
+		return res.redirect '/'
 
 	loginFoursquare: (req, res)=>
 		console.log 'Endpoint: Login Foursquare'

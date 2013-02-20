@@ -12,12 +12,20 @@ block content
 		#flower_shop
 			.center
 				h3 Flower Shops
-				form(name="loginForm", action="/login/flowershop", method="post")
-					input(type="text", name="username", id="username", value="", placeholder="Username")
-					input(type="password", name="password", id="password", value="", placeholder="Password")
-					#buttonWrapper
-						input(type="submit", name="loginButton", id="loginButton", value="", value="Login")
-						input(type="button", name="registerButton", id="registerButton", value="", value="Create a Flowershop")
+				#loginFlowershop
+					form(name="loginForm", action="/login/flowershop", method="post")
+						input(type="text", name="username", id="username", value="", placeholder="Username")
+						input(type="password", name="password", id="password", value="", placeholder="Password")
+						#buttonWrapper
+							input(type="submit", name="loginButton", id="loginButton", value="", value="Login")
+							input(type="button", name="swapCreateButton", id="swapCreateButton", value="", value="Create a Flowershop")
+				#createFlowershop
+					form(name="createForm", action="/create/flowershop", method="post")
+						input(type="text", name="username", id="username", value="", placeholder="Username")
+						input(type="password", name="password", id="password", value="", placeholder="Password")
+						#buttonWrapper
+							input(type="submit", name="loginButton", id="loginButton", value="", value="Login")
+							input(type="button", name="swapLoginButton", id="swapLoginButton", value="", value="Login to a Flowershop")
 		#divider
 			#innerDivider
 		#driver
@@ -28,6 +36,5 @@ block content
 					input(type="password", name="password", id="password", value="", placeholder="Password")
 					#buttonWrapper
 						input(type="submit", name="loginButton", id="loginButton", value="", value="Login")
-						input(type="button", name="registerButton", id="registerButton", value="", value="Register as a Driver")
 
 block footer
