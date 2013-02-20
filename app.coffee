@@ -104,25 +104,25 @@ exports.createServer = ->
 
 
   app.get "/logout", (req, res)->
-    UserController.logout req, res
+    return UserController.logout req, res
 
   app.post "/login", (req, res)->
-    UserController.login req, res
+    return UserController.login req, res
        
 
   app.get "/login/foursquare", (req, res) ->
-    UserController.loginFoursquare req, res
+    return UserController.loginFoursquare req, res
 
   app.get "/logout/foursquare", (req, res) ->
     req.session.destroy()
-    res.redirect '/login/foursquare'
+    return res.redirect '/login/foursquare'
 
 
   app.get '/auth/foursquare', passport.authenticate('foursquare')
 
 
   app.get '/auth/foursquare/callback', passport.authenticate('foursquare', { failureRedirect: '/' }), (req, res) ->
-    UserController.authCallback req, res
+    return UserController.authCallback req, res
 
   # final return of app object
   app
