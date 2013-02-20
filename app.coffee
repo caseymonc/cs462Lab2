@@ -100,7 +100,7 @@ exports.createServer = ->
     return UserController.renderProfileList req, res
 
   app.get "/login", (req, res)->
-    res.render('login', {title: "Login"})
+    return res.render('login', {title: "Login"})
 
 
   app.get "/logout", (req, res)->

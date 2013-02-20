@@ -16,7 +16,7 @@ module.exports = (User, Account) =>
 				return res.render 'profile', {checkins: body.response.checkins.items, user: user, title: "Profile", logged_in: limit == 10}
 
 	login2: (req, res)=>
-		res.redirect '/'
+		return res.redirect '/'
 
  	login: (req, res)=>
  		console.log 'Endpoint: Login'
