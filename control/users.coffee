@@ -17,7 +17,7 @@ module.exports = (User, Account) =>
 
 	login2: (req, res)=>
 		console.log 'Endpoint: Login'
-		return res.redirect "/login" unless (req.body.username? and req.body.password)
+		return res.redirect "/" unless (req.body.username? and req.body.password)
 		data = {username: req.body.username, password: req.body.password}
 		User.findOrCreate data, (err, user, created)=>
 			req.session.user = user
@@ -26,12 +26,12 @@ module.exports = (User, Account) =>
 			Account.findById user.foursquareId, (err, account)=>
 				return res.redirect '/login/foursquare' if err? or not account?
 				req.session.account = account
-				console.log "Redirect /app"
-				return res.redirect '/app'
+				console.log "Redirect /"
+				return res.redirect '/'
 
  	login: (req, res)=>
  		console.log 'Endpoint: Login'
- 		res.redirect "/login" unless (req.body.username? and req.body.password)
+ 		res.redirect "/" unless (req.body.username? and req.body.password)
 		data = {username: req.body.username, password: req.body.password}
 		User.findOrCreate data, (err, user, created)=>
 			req.session.user = user
@@ -40,8 +40,8 @@ module.exports = (User, Account) =>
 			Account.findById user.foursquareId, (err, account)=>
 				return res.redirect '/login/foursquare' if err? or not account?
 				req.session.account = account
-				console.log "Redirect /app"
-				return res.redirect '/app'
+				console.log "Redirect /"
+				return res.redirect '/'
 
 	renderProfileList: (req, res)=>
 		console.log 'Endpoint: Profile List'
@@ -71,14 +71,14 @@ module.exports = (User, Account) =>
 		User.addAccount req.user.foursquareId, req.session.user.username, ()=>
 			return res.redirect '/app'
 
-ensureAuthenticated = (req, res, next)->
+ensureDriverAuthenticated = (req, res, next)->
 	ensureUserAuthenticated req, res, ()->
 		ensureFoursquareAuthenticated req, res, next
 
 ensureUserAuthenticated = (req, res, next)->
 	console.log 'Try Auth Login'
 	return next() if req.session?.user?
-	res.redirect '/login'
+	res.redirect '/'
 
 ensureFoursquareAuthenticated = (req, res, next)->	
 	console.log 'Try Auth Foursquare'
