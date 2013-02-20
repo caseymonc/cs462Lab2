@@ -107,7 +107,7 @@ exports.createServer = ->
     return UserController.logout req, res
 
   app.post "/login", (req, res)->
-    return UserController.login req, res
+    return UserController.login2 req, res
        
 
   app.get "/login/foursquare", (req, res) ->

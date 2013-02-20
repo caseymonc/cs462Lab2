@@ -15,10 +15,22 @@ module.exports = (User, Account) =>
 				console.log JSON.stringify body
 				return res.render 'profile', {checkins: body.response.checkins.items, user: user, title: "Profile", logged_in: limit == 10}
 
+	login2: (req, res)=>
+		res.redirect '/'
+
  	login: (req, res)=>
  		console.log 'Endpoint: Login'
- 		res.redirect "/login"# unless (req.body.username? and req.body.password)
-		
+ 		res.redirect "/login" unless (req.body.username? and req.body.password)
+		data = {username: req.body.username, password: req.body.password}
+		User.findOrCreate data, (err, user, created)=>
+			req.session.user = user
+			if created or not user.foursquareId?
+				return res.redirect '/login/foursquare'
+			Account.findById user.foursquareId, (err, account)=>
+				return res.redirect '/login/foursquare' if err? or not account?
+				req.session.account = account
+				console.log "Redirect /app"
+				return res.redirect '/app'
 
 	renderProfileList: (req, res)=>
 		console.log 'Endpoint: Profile List'
