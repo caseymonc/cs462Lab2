@@ -107,8 +107,7 @@ exports.createServer = ->
     return UserController.logout req, res
 
   app.post "/login", (req, res)->
-    res.redirect '/'
-    #return UserController.login req, res
+    return UserController.logout req, res
        
 
   app.get "/login/foursquare", (req, res) ->
