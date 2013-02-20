@@ -16,13 +16,7 @@ module.exports = (User, Account) =>
 				res.render 'profile', {checkins: body.response.checkins.items, user: user, title: "Profile", logged_in: limit == 10}
 
 
-	renderProfileList: (req, res)=>
-		console.log 'Endpoint: Profile List'
-		Account.getAllAccounts (err, accounts)=>
-			logged_in = false
-			if req.session?.account?
-				logged_in = true
-			res.render('profiles', {users: accounts, title: "Users", logged_in: logged_in})
+	
 
  	login: (req, res)=>
  		console.log 'Endpoint: Login'
@@ -37,6 +31,14 @@ module.exports = (User, Account) =>
 				req.session.account = account
 				console.log "Redirect /app"
 				res.redirect '/app'
+
+	renderProfileList: (req, res)=>
+		console.log 'Endpoint: Profile List'
+		Account.getAllAccounts (err, accounts)=>
+			logged_in = false
+			if req.session?.account?
+				logged_in = true
+			res.render('profiles', {users: accounts, title: "Users", logged_in: logged_in})
 
 	logout: (req, res)=>
 		console.log 'Endpoint: Logout'
@@ -58,16 +60,16 @@ module.exports = (User, Account) =>
 		User.addAccount req.user.foursquareId, req.session.user.username, ()=>
 			res.redirect '/app'
 
-ensureAuthenticated= (req, res, next)->
+ensureAuthenticated = (req, res, next)->
 	ensureUserAuthenticated req, res, ()->
 		ensureFoursquareAuthenticated req, res, next
 
-ensureUserAuthenticated= (req, res, next)->
+ensureUserAuthenticated = (req, res, next)->
 	console.log 'Try Auth Login'
 	return next() if req.session?.user?
 	res.redirect '/login'
 
-ensureFoursquareAuthenticated= (req, res, next)->	
+ensureFoursquareAuthenticated = (req, res, next)->	
 	console.log 'Try Auth Foursquare'
 	return next() if req.session?.account?
 	res.redirect '/login/foursquare'
