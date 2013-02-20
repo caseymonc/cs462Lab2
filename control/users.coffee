@@ -13,10 +13,7 @@ module.exports = (User, Account) =>
 				json: true
 			request options, (error, response, body)=>
 				console.log JSON.stringify body
-				res.render 'profile', {checkins: body.response.checkins.items, user: user, title: "Profile", logged_in: limit == 10}
-
-
-	
+				return res.render 'profile', {checkins: body.response.checkins.items, user: user, title: "Profile", logged_in: limit == 10}
 
  	login: (req, res)=>
  		console.log 'Endpoint: Login'
@@ -30,7 +27,7 @@ module.exports = (User, Account) =>
 				return res.redirect '/login/foursquare' if err? or not account?
 				req.session.account = account
 				console.log "Redirect /app"
-				res.redirect '/app'
+				return res.redirect '/app'
 
 	renderProfileList: (req, res)=>
 		console.log 'Endpoint: Profile List'
@@ -38,27 +35,27 @@ module.exports = (User, Account) =>
 			logged_in = false
 			if req.session?.account?
 				logged_in = true
-			res.render('profiles', {users: accounts, title: "Users", logged_in: logged_in})
+			return res.render('profiles', {users: accounts, title: "Users", logged_in: logged_in})
 
 	logout: (req, res)=>
 		console.log 'Endpoint: Logout'
 		if req.session?.user?
 			delete req.session.user
 		req.session.destroy()
-		res.redirect '/login'
+		return res.redirect '/login'
 
 	loginFoursquare: (req, res)=>
 		console.log 'Endpoint: Login Foursquare'
 		ensureUserAuthenticated req, res, ()=>
 			return res.redirect '/app' if req.session?.account?
-			res.render('login_foursquare', {title: "Foursquare Login"})
+			return res.render('login_foursquare', {title: "Foursquare Login"})
 
 	authCallback: (req, res)=>
 		console.log 'Endpoint: Auth Callback'
 		req.session.account = req.user
 		req.session.user.foursquareId = req.user.foursquareId
 		User.addAccount req.user.foursquareId, req.session.user.username, ()=>
-			res.redirect '/app'
+			return res.redirect '/app'
 
 ensureAuthenticated = (req, res, next)->
 	ensureUserAuthenticated req, res, ()->
