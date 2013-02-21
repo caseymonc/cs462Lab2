@@ -18,7 +18,7 @@ module.exports = (db) ->
 
 
   AccountSchema.statics.getAllRegisteredDrivers = (cb) ->
-    @find({uri: {$ne: null}).exec cb
+    @find({uri: {$ne: null}}).exec cb
 
   AccountSchema.statics.getAllAccounts = (cb) ->
     @find().exec cb
