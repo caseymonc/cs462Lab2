@@ -1,0 +1,28 @@
+extends layout
+
+append scripts
+	link(rel="stylesheet", href="/shop.css")
+
+block header
+	h1 #{shop.name}
+	a(href="/profiles") Drivers
+	a(href="/logout", class="ui-btn-right", rel="external") Logout
+
+block content
+	#main
+		#info
+			img(src="/images/xBoronia-Yellow.jpg", id="shopImage")
+			h2(class="desc") #{shop.name}
+			h4(class="desc") Address: #{shop.address}
+			h4(class="desc") Phone: #{shop.phone}
+
+		#delivery
+			.center
+				form(name="createForm", action="/delivery", method="post", data-ajax="false")
+					lable(class="label") Request Delivery
+					input(type="text", name="address", id="address", value="", placeholder="Address")
+					input(type="date", name="deliveryTime", id="deliveryTime", value"")
+					input(type="date", name="pickupTime", id="pickupTime", value"")
+					input(type="submit", name="request", id="request", value="", value="Request")
+
+block footer

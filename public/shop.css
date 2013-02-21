@@ -1,0 +1,99 @@
+#main{
+	height: 100%;
+	width: 100%;
+}
+
+#info{
+	height: 100%;
+	width: 40%;
+	float: left;
+
+	-webkit-box-shadow: inset 0 6px 6px -6px black;
+	   -moz-box-shadow: inset 0 6px 6px -6px black;
+	        box-shadow: inset 0 6px 6px -6px black;
+
+	background-image: url(/images/furley_bg.png);
+}
+
+#shopImage{
+	-moz-border-radius: 15px;
+			 border-radius: 15px;
+	width: 70%;
+	margin-left: 15%;
+	margin-top: 5%;
+	-moz-box-shadow:    1px 1px 2px 3px #aaa;
+  -webkit-box-shadow: 1px 1px 2px 3px #aaa;
+  box-shadow:         1px 1px 2px 3px #aaa;
+}
+
+.desc{
+	margin: 5px;
+	margin-left: 16%;
+	padding: 0px	
+}
+
+.center{
+	width: 50%;
+	margin: auto;
+	margin-top: 50px;
+	text-align: center;
+	color: #7A6148
+}
+
+#delivery{
+	height: 100%;
+	width: 60%;
+	float: left;
+
+	-webkit-box-shadow: inset 0 6px 6px -6px black;
+	   -moz-box-shadow: inset 0 6px 6px -6px black;
+	        box-shadow: inset 0 6px 6px -6px black;
+
+	background-image: url(/images/furley_bg.png);
+
+}
+
+#page{
+	height: 100%;
+	width: 100%;
+}
+
+#divider{
+	width: 3.9%;
+	height: 100%;
+	-moz-box-shadow:    3px 3px 6px 4px #ccc;
+  -webkit-box-shadow: 3px 3px 6px 4px #ccc;
+  box-shadow:         3px 3px 6px 4px #ccc;
+	float: left;
+	
+	background-image: url(/images/light_alu.png);
+
+}
+
+.label{
+	float: left;
+	padding: 5px;
+}
+
+#innerDivider{
+	height: 100%;
+	width: 100%;
+	-webkit-box-shadow: inset 0 6px 3px -6px black;
+	   -moz-box-shadow: inset 0 6px 3px -6px black;
+	        box-shadow: inset 0 6px 3px -6px black;
+
+	background-color: rgba(140,98,57,.3);
+}
+
+.ui-content{
+	padding: 0px;
+	height: 100%;
+}
+
+.ui-page-active{
+	height: 100%;
+}
+
+.hiddenDiv{
+	display: none;
+}
