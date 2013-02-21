@@ -42,10 +42,11 @@ module.exports = (User, Account) =>
 				console.log "Redirect / fsq 1"
 				return# res.redirect '/login/foursquare'
 			Account.findById user.foursquareId, (err, account)=>
-				console.log "Redirect / fsq 2"
-				return res.redirect '/login/foursquare' if err? or not account?
+				if err? or not account?
+					console.log "Redirect / fsq 2"
+					return res.redirect '/login/foursquare' 
 				req.session.account = account
-				console.log "Redirect / 3"
+				console.log "Redirect /profile/" + account.foursquareId
 				return res.redirect '/profile/' + account.foursquareId
 
  	login: (req, res)=>
