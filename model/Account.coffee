@@ -23,6 +23,7 @@ module.exports = (db) ->
   AccountSchema.statics.findById = (id, cb) ->
     @findOne({"foursquareId": id}).exec cb
 
+
   # Get a user by id
   AccountSchema.statics.findOrCreate = (data, cb) ->
     @findOne({"foursquareId": data.foursquareId}).exec (err, account) ->
