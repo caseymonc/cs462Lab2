@@ -16,7 +16,7 @@ module.exports = (User, Account) =>
 				return res.render 'profile', {checkins: body.response.checkins.items, user: user, title: "Profile", logged_in: limit == 10, user_id: req.params.user_id}
 
 	registerUri: (req, res)=>
-		return renderProfile req, res 
+		return @renderProfile req, res 
 
 	renderProfileEventForm: (req, res)=>
 		return res.render 'uri', {user_id: req.params.user_id, title: "Profile"}
