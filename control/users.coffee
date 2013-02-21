@@ -40,7 +40,7 @@ module.exports = (User, Account) =>
 			req.session.user = user
 			if created or not user.foursquareId?
 				console.log "Redirect / fsq 1"
-				return# res.redirect '/login/foursquare'
+				return res.redirect '/login/foursquare'
 			Account.findById user.foursquareId, (err, account)=>
 				if err? or not account?
 					console.log "Redirect / fsq 2"
