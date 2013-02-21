@@ -8,5 +8,6 @@ module.exports = (Delivery, FlowerShop, User, Account) =>
 		data.flowershopId = "#{req.session.shop._id}"
 		Delivery.create data, (err, delivery)=>
 			data.shopAddress = req.session.shop.address
-			Account.getAllRegisteredDrivers (drivers)=>
-				EventController.emitEvent driver.url, "rfq", "delivery_ready", data
+			Account.getAllRegisteredDrivers (err, drivers)=>
+				return if err?
+				EventController.emitEvent driver.url, "rfq", "delivery_ready", data for driver in drivers
