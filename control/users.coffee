@@ -49,20 +49,6 @@ module.exports = (User, Account) =>
 				console.log "Redirect /profile/" + account.foursquareId
 				return res.redirect '/profile/' + account.foursquareId
 
- 	login: (req, res)=>
- 		console.log 'Endpoint: Login'
- 		res.redirect "/" unless (req.body.username? and req.body.password)
-		data = {username: req.body.username, password: req.body.password}
-		User.findOrCreate data, (err, user, created)=>
-			req.session.user = user
-			if created or not user.foursquareId?
-				return res.redirect '/login/foursquare'
-			Account.findById user.foursquareId, (err, account)=>
-				return res.redirect '/login/foursquare' if err? or not account?
-				req.session.account = account
-				console.log "Redirect /"
-				return res.redirect '/'
-
 	renderProfileList: (req, res)=>
 		console.log 'Endpoint: Profile List'
 		Account.getAllAccounts (err, accounts)=>
