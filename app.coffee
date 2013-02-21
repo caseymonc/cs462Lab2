@@ -106,6 +106,12 @@ exports.createServer = ->
   app.get '/profile/:user_id', (req, res)->
     UserController.renderProfile req, res
 
+  app.get '/profile/:user_id/uri', (req, res)->
+    UserController.renderProfileEventForm req, res
+
+  app.post '/profile/:user_id/uri', (req, res)->
+    UserController.registerUri req, res
+
   app.get "/profiles", (req, res)->
     return UserController.renderProfileList req, res
 
