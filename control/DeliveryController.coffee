@@ -10,5 +10,5 @@ module.exports = (Delivery, FlowerShop, User, Account) =>
 			data.shopAddress = req.session.shop.address
 			Account.getAllRegisteredDrivers (err, drivers)=>
 				return res.redirect '/shop/#{req.session.shop._id/test}' if err?
-				EventController.emitEvent driver.url, "rfq", "delivery_ready", data for driver in drivers
-				res.redirect '/shop/#{req.session.shop._id}'
+				EventController.emitEvent driver.uri, "rfq", "delivery_ready", data for driver in drivers
+				res.redirect "/shop/#{req.session.shop._id}"

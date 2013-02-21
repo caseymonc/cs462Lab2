@@ -4,4 +4,4 @@ module.exports = () =>
 		console.log "Url: " + url
 		console.log "domain: " + domain
 		console.log "name: " + name
-		console.log "data: " + data
+		console.log "data: " + JSON.stringify data
