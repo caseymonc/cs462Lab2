@@ -1,0 +1,18 @@
+extends layout
+
+append scripts
+	link(rel="stylesheet", href="/shop.css")
+
+block header
+	h1 #{shop.name}
+	a(href="/profile/#user_id") Profile
+
+block content
+	#main
+		.center
+			form(name="createForm", action="/delivery", method="post", data-ajax="false")
+				lable(class="label") Register URI
+				input(type="text", name="uri", id="uri", value="", placeholder="Event Url")
+				input(type="submit", name="register", id="register", value="Register")
+
+block footer
