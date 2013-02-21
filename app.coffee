@@ -112,6 +112,9 @@ exports.createServer = ->
   app.post '/profile/:user_id/uri', (req, res)->
     UserController.registerUri req, res
 
+  app.delete '/profile/:user_id/uri', (req, res)->
+    UserController.unregisterUri req, res
+
   app.get "/profiles", (req, res)->
     return UserController.renderProfileList req, res
 

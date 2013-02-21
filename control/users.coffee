@@ -21,6 +21,12 @@ module.exports = (User, Account) =>
 			user.save (err)=>
 				return res.redirect '/profile/' + req.params.user_id
 
+	unregisterUri: (req, res)=>
+		Account.findById req.params.user_id, (err, user)=>
+			user.uri = undefined
+			user.save (err)=>
+				return res.redirect '/profile/' + req.params.user_id
+
 
 	renderProfileEventForm: (req, res)=>
 		return res.render 'uri', {user_id: req.params.user_id, title: "Profile"}
