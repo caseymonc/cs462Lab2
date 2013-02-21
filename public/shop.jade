@@ -21,8 +21,8 @@ block content
 				form(name="createForm", action="/delivery", method="post", data-ajax="false")
 					lable(class="label") Request Delivery
 					input(type="text", name="address", id="address", value="", placeholder="Address")
-					input(type="datetime", name="deliveryTime", id="deliveryTime", value"")
-					input(type="datetime", name="pickupTime", id="pickupTime", value"")
+					input(type="date", name="deliveryTime", id="deliveryTime", value"")
+					input(type="date", name="pickupTime", id="pickupTime", value"")
 					input(type="submit", name="request", id="request", value="", value="Request")
 
 block footer
