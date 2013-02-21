@@ -98,7 +98,7 @@ ensureDriverAuthenticated = (req, res, next)->
 ensureUserAuthenticated = (req, res, next)->
 	console.log 'Try Auth Login'
 	return next() if req.session?.user?
-	res.redirect '/'
+	res.redirect '/login'
 
 ensureFoursquareAuthenticated = (req, res, next)->	
 	console.log 'Try Auth Foursquare'
