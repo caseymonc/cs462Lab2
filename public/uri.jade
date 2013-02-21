@@ -16,7 +16,7 @@ block content
 				input(type="submit", name="register", id="register", value="Register")
 			br
 			br
-			for(name="unregister", action="/profile/#{user_id}/uri", method="delete", data-ajax="false")
+			form(name="unregister", action="/profile/#{user_id}/uri", method="delete", data-ajax="false")
 				lable(class="label") Unregister URI
 				input(type="submit", name="register", id="register", value="Unregister")
 
