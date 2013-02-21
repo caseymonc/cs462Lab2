@@ -19,7 +19,7 @@ module.exports = (User, Account) =>
 		return renderProfile req, res 
 
 	renderProfileEventForm: (req, res)=>
-		return res.render 'uri', {user_id: req.params.user_id}
+		return res.render 'uri', {user_id: req.params.user_id, title: "Profile"}
 
 	login2: (req, res)=>
 		console.log 'Endpoint: Login'
