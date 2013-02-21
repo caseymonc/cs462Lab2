@@ -13,7 +13,7 @@ module.exports = (User, Account) =>
 				json: true
 			request options, (error, response, body)=>
 				console.log JSON.stringify body
-				return res.render 'profile', {checkins: body.response.checkins.items, user: user, title: "Profile", logged_in: limit == 10}
+				return res.render 'profile', {checkins: body.response.checkins.items, user: user, title: "Profile", logged_in: limit == 10, user_id: req.params.user_id}
 
 	login2: (req, res)=>
 		console.log 'Endpoint: Login'
