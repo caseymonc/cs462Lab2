@@ -2,14 +2,13 @@ extends layout
 
 
 block header
-	a(href="/profiles", data-transition="slide", data-direction="reverse", style="float: left") Users
+	a(href="/profiles", data-transition="slide", data-direction="reverse") Users
 	h1 #{title}
 	if logged_in
 		a(href="/logout", class="ui-btn-right", rel="external") Logout
 	else
 		a(href="/login", class="ui-btn-right", rel="external") Login
 
-	a(href="/profile/#{user_id}/uri", data-transition="slide", style="float: left") Register Event URL
 
 block content
 
@@ -27,3 +26,5 @@ block content
 		each checkin in checkins
 			+listItem(user, checkin)
 
+block footer
+	a(href="/profile/#{user_id}/uri", data-transition="slide", style="margin:4px") Register Event URL
