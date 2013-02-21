@@ -3,7 +3,9 @@ fs = require 'fs'
 MemoryStore = require('express').session.MemoryStore
 Mongoose = require 'mongoose'
 
+DeliveryModel = require './model/Delivery'
 UserModel = require './model/User'
+FlowerShopModel = require './model/FlowerShop'
 AccountModel = require './model/Account'
 passport = require 'passport'
 LocalStrategy = require('passport-local').Strategy
@@ -14,10 +16,18 @@ https = require('https')
 
 DB = process.env.DB || 'mongodb://localhost:27017/shop'
 db = Mongoose.createConnection DB
+Delivery = DeliveryModel db
 User = UserModel db
+FlowerShop = FlowerShopModel db
 Account = AccountModel db
 UserControl = require('./control/users')
 UserController = new UserControl User, Account
+
+FlowerShopControl = require('./control/FlowerShopController')
+FlowerShopController = new FlowerShopControl FlowerShop, User
+
+DeliveryControl = require('./control/DeliveryController')
+DeliveryController = new DeliveryControl Delivery, FlowerShop, User, Account
 
 mongomate = require('mongomate')('mongodb://localhost')
 
@@ -108,7 +118,16 @@ exports.createServer = ->
 
   app.post "/login", (req, res)->
     return UserController.login2 req, res
+
+  app.get '/shop/:flowershopId', (req, res)->
+    FlowerShopController.renderShopPage req, res
        
+  app.post "/create/flowershop", (req, res)->
+    console.log FlowerShopController
+    return FlowerShopController.create req, res
+
+  app.post "/login/flowershop", (req, res)->
+    return FlowerShopController.login req, res
 
   app.get "/login/foursquare", (req, res) ->
     return UserController.loginFoursquare req, res
@@ -116,6 +135,9 @@ exports.createServer = ->
   app.get "/logout/foursquare", (req, res) ->
     req.session.destroy()
     return res.redirect '/login/foursquare'
+
+  app.post "/delivery", (req, res)->
+    DeliveryController.createDelivery req, res
 
 
   app.get '/auth/foursquare', passport.authenticate('foursquare')

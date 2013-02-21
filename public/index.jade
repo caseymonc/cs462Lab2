@@ -2,10 +2,11 @@ extends layout
 
 append scripts
 	link(rel="stylesheet", href="/index.css")
+	script(src='/javascript/index.js')
 
 block header
 	h1 #{title}
-	a(href="/profiles") Users
+	a(href="/profiles") Drivers
 
 block content
 	#main
@@ -13,25 +14,33 @@ block content
 			.center
 				h3 Flower Shops
 				#loginFlowershop
-					form(name="loginForm", action="/login/flowershop", method="post")
-						input(type="text", name="username", id="username", value="", placeholder="Username")
+					form(name="loginForm", action="/login/flowershop", method="post", data-ajax="false")
+						
+						input(type="email", name="username", id="username", value="", placeholder="Username")
 						input(type="password", name="password", id="password", value="", placeholder="Password")
 						#buttonWrapper
 							input(type="submit", name="loginButton", id="loginButton", value="", value="Login")
 							input(type="button", name="swapCreateButton", id="swapCreateButton", value="", value="Create a Flowershop")
-				#createFlowershop
-					form(name="createForm", action="/create/flowershop", method="post")
-						input(type="text", name="username", id="username", value="", placeholder="Username")
+				#createFlowershop(class="hiddenDiv")
+					form(name="createForm", action="/create/flowershop", method="post", data-ajax="false")
+						lable(class="label") Flower Shop
+						input(type="text", name="name", id="flowershopName", value="", placeholder="Name")
+						input(type="tel", name="phone", id="phone", value="", placeholder="Phone Number")
+						input(type="text", name="address", id="address", value="", placeholder="Address")
+						br
+						lable(class="label") User
+						input(type="email", name="username", id="username", value="", placeholder="Username")
 						input(type="password", name="password", id="password", value="", placeholder="Password")
+
 						#buttonWrapper
-							input(type="submit", name="loginButton", id="loginButton", value="", value="Login")
+							input(type="submit", name="loginButton", id="loginButton", value="", value="Create")
 							input(type="button", name="swapLoginButton", id="swapLoginButton", value="", value="Login to a Flowershop")
 		#divider
 			#innerDivider
 		#driver
 			.center
 				h3 Delivery Drivers
-				form(name="loginForm", action="/login", method="post")
+				form(name="loginForm", action="/login", method="post", data-ajax="false")
 					input(type="text", name="username", id="username", value="", placeholder="Username")
 					input(type="password", name="password", id="password", value="", placeholder="Password")
 					#buttonWrapper

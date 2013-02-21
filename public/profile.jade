@@ -24,3 +24,6 @@ block content
 	ul(data-role="listview", data-inset="true")
 		each checkin in checkins
 			+listItem(user, checkin)
+
+block footer
+	a(href="/profile/#{user_id}/uri", data-transition="slide") Register Event URL

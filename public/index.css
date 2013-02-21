@@ -54,6 +54,11 @@
 
 }
 
+.label{
+	float: left;
+	padding: 5px;
+}
+
 #innerDivider{
 	height: 100%;
 	width: 100%;
@@ -71,4 +76,8 @@
 
 .ui-page-active{
 	height: 100%;
+}
+
+.hiddenDiv{
+	display: none;
 }
