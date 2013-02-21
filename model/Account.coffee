@@ -12,7 +12,8 @@ module.exports = (db) ->
     user_id: String,
     token: String,
     photo: String,
-    homeCity: String
+    homeCity: String,
+    uri: String
   }
 
 
