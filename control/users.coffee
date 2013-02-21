@@ -16,7 +16,18 @@ module.exports = (User, Account) =>
 				return res.render 'profile', {checkins: body.response.checkins.items, user: user, title: "Profile", logged_in: limit == 10, user_id: req.params.user_id}
 
 	registerUri: (req, res)=>
-		return @renderProfile req, res 
+		console.log 'Endpoint: Profile'
+		Account.findById req.params.user_id, (err, user)=>
+			limit = 1
+			if req.session?.account? && req.params.user_id == req.session.account.foursquareId
+				limit = 10
+			options = 
+				url: 'https://api.foursquare.com' + '/v2/users/'+req.params.user_id+'/checkins?oauth_token='+user.token+'&limit=' + limit
+				json: true
+			request options, (error, response, body)=>
+				console.log JSON.stringify body
+				return res.render 'profile', {checkins: body.response.checkins.items, user: user, title: "Profile", logged_in: limit == 10, user_id: req.params.user_id}
+
 
 	renderProfileEventForm: (req, res)=>
 		return res.render 'uri', {user_id: req.params.user_id, title: "Profile"}
